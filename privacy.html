@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Packwalk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ember: #C4754A;
+            --ember-light: #D4936A;
+            --ember-glow: rgba(196, 117, 74, 0.15);
+            --sage: #6B8F71;
+            --sage-light: #8FB396;
+            --ink: #1A1614;
+            --ink-muted: #5C5856;
+            --paper: #FAF8F5;
+            --cream: #F5F0E8;
+            --gold: #C9A962;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Instrument Sans', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Animated gradient mesh background */
+        .bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, var(--ember-glow) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 20%, rgba(107, 143, 113, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 60% at 70% 80%, rgba(201, 169, 98, 0.08) 0%, transparent 50%),
+                var(--paper);
+        }
+
+        /* Noise texture overlay */
+        .noise {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Header */
+        .header {
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--ember);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px var(--ember-glow);
+        }
+
+        .brand-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .brand-name {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.5px;
+        }
+
+        /* Main content */
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 24px 80px;
+        }
+
+        .page-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(32px, 6vw, 44px);
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--ink-muted);
+            margin-bottom: 40px;
+            font-size: 15px;
+        }
+
+        .highlight-box {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--sage);
+            box-shadow: 0 2px 12px rgba(26, 22, 20, 0.04);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--ink);
+        }
+
+        .highlight-box strong {
+            color: var(--sage);
+        }
+
+        h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 22px;
+            font-weight: 500;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--ink);
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+        ul {
+            margin-left: 24px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--ink);
+        }
+
+        li strong {
+            color: var(--ink);
+        }
+
+        a {
+            color: var(--ember);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--ember-light);
+            text-decoration: underline;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: var(--ember-glow);
+            color: var(--ember);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 32px;
+            border-top: 1px solid var(--cream);
+            text-align: center;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--ember), transparent);
+            border-radius: 2px;
+            margin: 0 auto 20px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: var(--ink-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .footer-shelter {
+            font-size: 13px;
+            color: var(--sage);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .maple {
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .main {
+                padding: 20px 20px 60px;
+            }
+
+            h2 {
+                font-size: 20px;
+                margin-top: 32px;
+            }
+
+            .highlight-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+    <div class="noise"></div>
+
+    <header class="header">
+        <a href="/" class="brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <circle cx="12" cy="13" r="3"/>
+                    <circle cx="7.5" cy="8" r="2"/>
+                    <circle cx="12" cy="6" r="2"/>
+                    <circle cx="16.5" cy="8" r="2"/>
+                </svg>
+            </div>
+            <span class="brand-name">Packwalk</span>
+        </a>
+    </header>
+
+    <main class="main">
+        <h1 class="page-title">Privacy Policy</h1>
+        <p class="page-subtitle">Last updated: December 24, 2024</p>
+
+        <div class="highlight-box">
+            <p><strong>Our Commitment:</strong> Packwalk is built on trust. We collect only what's necessary to connect dog owners with walkers, and we never sell your personal data.</p>
+        </div>
+
+        <h2>1. Who We Are</h2>
+        <p>Packwalk ("we," "our," or "us") is a dog walking platform operating in Toronto, Canada. We connect dog owners with trusted walkers, and donate 20% of our platform fee to local animal shelters.</p>
+        <p>Contact: <a href="mailto:privacy@packwalk.ca">privacy@packwalk.ca</a></p>
+
+        <h2>2. Information We Collect</h2>
+
+        <p><span class="section-label">Account Info</span></p>
+        <ul>
+            <li>Name, email address, phone number</li>
+            <li>Profile photo (optional)</li>
+            <li>Home address (for dog owners, to coordinate pickups)</li>
+            <li>Authentication data via Apple Sign-In or Google Sign-In</li>
+        </ul>
+
+        <p><span class="section-label">Dog Information</span></p>
+        <ul>
+            <li>Dog name, breed, age, weight</li>
+            <li>Photos, temperament notes, special instructions</li>
+            <li>Vaccination and health information</li>
+        </ul>
+
+        <p><span class="section-label">Walker Information</span></p>
+        <ul>
+            <li>Service areas and availability</li>
+            <li>Experience and bio</li>
+            <li>Identity verification documents</li>
+            <li>Banking information for payouts (processed by Stripe)</li>
+        </ul>
+
+        <p><span class="section-label">Location Data</span></p>
+        <ul>
+            <li>Real-time GPS location during active walks (for safety and tracking)</li>
+            <li>Walk routes and duration</li>
+            <li>Service area locations (for walkers)</li>
+        </ul>
+
+        <p><span class="section-label">Payment Information</span></p>
+        <ul>
+            <li>Payment card details are collected and processed directly by Stripe, our payment provider. We do not store your full card number.</li>
+            <li>Transaction history and receipts</li>
+        </ul>
+
+        <p><span class="section-label">Communications</span></p>
+        <ul>
+            <li>In-app messages between owners and walkers</li>
+            <li>Support inquiries</li>
+        </ul>
+
+        <p><span class="section-label">Usage Data</span></p>
+        <ul>
+            <li>App interactions and feature usage</li>
+            <li>Device type, operating system</li>
+            <li>Crash reports and performance data</li>
+        </ul>
+
+        <h2>3. How We Use Your Information</h2>
+        <ul>
+            <li><strong>Provide Services:</strong> Connect owners with walkers, process bookings, enable real-time walk tracking</li>
+            <li><strong>Process Payments:</strong> Charge for walks, pay walkers, issue refunds</li>
+            <li><strong>Safety:</strong> Track walk routes, verify walker identities, handle emergencies</li>
+            <li><strong>Communications:</strong> Send booking confirmations, walk updates, and important account notifications</li>
+            <li><strong>Improve the App:</strong> Analyze usage patterns, fix bugs, develop new features</li>
+            <li><strong>Legal Compliance:</strong> Meet regulatory requirements, respond to legal requests</li>
+        </ul>
+
+        <h2>4. Information Sharing</h2>
+        <p>We share your information only in these circumstances:</p>
+
+        <p><strong>With Other Users</strong></p>
+        <ul>
+            <li>Owners see walker profiles (name, photo, bio, ratings, availability)</li>
+            <li>Walkers see owner name, dog information, and pickup address for confirmed bookings</li>
+            <li>Both parties can message each other within the app</li>
+        </ul>
+
+        <p><strong>With Service Providers</strong></p>
+        <ul>
+            <li><strong>Stripe:</strong> Payment processing and walker payouts</li>
+            <li><strong>Convex:</strong> Database and backend infrastructure</li>
+            <li><strong>Apple/Google:</strong> Authentication services</li>
+            <li><strong>Expo:</strong> Push notifications</li>
+        </ul>
+
+        <p><strong>For Legal Reasons</strong></p>
+        <ul>
+            <li>To comply with laws or legal processes</li>
+            <li>To protect the safety of users, pets, or the public</li>
+            <li>To enforce our Terms of Service</li>
+        </ul>
+
+        <p><strong>We Never:</strong></p>
+        <ul>
+            <li>Sell your personal data to third parties</li>
+            <li>Share your information for third-party advertising</li>
+            <li>Use your data for purposes unrelated to our services</li>
+        </ul>
+
+        <h2>5. Location Data</h2>
+        <p>Location tracking is central to our service:</p>
+        <ul>
+            <li><strong>During Walks:</strong> We collect real-time GPS data so owners can track their dog's walk. This data is stored as part of the walk history.</li>
+            <li><strong>When Not Walking:</strong> We do not track your location when you're not actively using walk-related features.</li>
+            <li><strong>Walker Service Areas:</strong> Walkers set their service areas to appear in relevant searches.</li>
+        </ul>
+        <p>You can control location permissions in your device settings. Note that disabling location access will prevent core features from working.</p>
+
+        <h2>6. Data Retention</h2>
+        <ul>
+            <li><strong>Active Accounts:</strong> We retain your data while your account is active</li>
+            <li><strong>Walk History:</strong> Kept for 3 years for safety records and dispute resolution</li>
+            <li><strong>Payment Records:</strong> Retained as required by tax and financial regulations (typically 7 years)</li>
+            <li><strong>Deleted Accounts:</strong> Personal data is deleted within 30 days, except where legal retention is required</li>
+        </ul>
+
+        <h2>7. Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+            <li><strong>Access:</strong> Request a copy of your personal data</li>
+            <li><strong>Correction:</strong> Update inaccurate information via app settings or by contacting us</li>
+            <li><strong>Deletion:</strong> Request deletion of your account and data</li>
+            <li><strong>Export:</strong> Receive your data in a portable format</li>
+            <li><strong>Withdraw Consent:</strong> Opt out of optional data collection</li>
+        </ul>
+        <p>To exercise these rights, contact <a href="mailto:privacy@packwalk.ca">privacy@packwalk.ca</a>.</p>
+
+        <h2>8. Data Security</h2>
+        <p>We protect your data through:</p>
+        <ul>
+            <li>Encrypted data transmission (HTTPS/TLS)</li>
+            <li>Secure authentication via Apple and Google Sign-In</li>
+            <li>Payment data handled by PCI-compliant Stripe</li>
+            <li>Access controls limiting employee data access</li>
+            <li>Regular security reviews</li>
+        </ul>
+
+        <h2>9. Children's Privacy</h2>
+        <p>Packwalk is not intended for users under 18 years of age. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us immediately.</p>
+
+        <h2>10. International Users</h2>
+        <p>Packwalk currently operates in Canada. If you access our services from outside Canada, your data will be transferred to and processed in Canada, subject to Canadian privacy laws.</p>
+
+        <h2>11. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy periodically. We will notify you of significant changes through the app or via email. Continued use of Packwalk after changes constitutes acceptance of the updated policy.</p>
+
+        <h2>12. Contact Us</h2>
+        <p>For privacy-related questions or concerns:</p>
+        <p>
+            <strong>Email:</strong> <a href="mailto:privacy@packwalk.ca">privacy@packwalk.ca</a><br>
+            <strong>Address:</strong> Toronto, Ontario, Canada
+        </p>
+
+        <footer class="footer">
+            <div class="footer-divider"></div>
+            <p class="footer-text">
+                Canadian-owned <span class="maple">🍁</span> Made in Toronto
+            </p>
+            <p class="footer-shelter">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                </svg>
+                20% of our platform fee goes to local animal shelters
+            </p>
+        </footer>
+    </main>
+</body>
+</html>
