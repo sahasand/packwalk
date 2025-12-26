@@ -10,7 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
     :root {
       --ember: #E86A33;
@@ -421,6 +424,13 @@
       backdrop-filter: blur(10px);
     }
 
+    .screen-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
     .screen-title {
       font-family: 'Fraunces', serif;
       font-size: 1.1rem;
@@ -578,6 +588,16 @@
       font-size: 1.5rem;
       margin-bottom: 1.25rem;
     }
+
+    .feature-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke-width: 2;
+    }
+
+    .feature:nth-child(1) .feature-icon svg { stroke: #2E7D32; }
+    .feature:nth-child(2) .feature-icon svg { stroke: var(--ember); }
+    .feature:nth-child(3) .feature-icon svg { stroke: #C2185B; fill: #C2185B; }
 
     .feature:nth-child(1) .feature-icon {
       background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
@@ -1373,7 +1393,7 @@
           <div class="phone">
             <div class="phone-screen">
               <div class="phone-screen-content">
-                <div class="screen-icon">🐕</div>
+                <div class="screen-icon"><i data-lucide="dog"></i></div>
                 <div class="screen-title">Find Walkers</div>
                 <div class="screen-desc">Book verified walkers in your neighbourhood</div>
               </div>
@@ -1401,7 +1421,7 @@
           <div class="phone">
             <div class="phone-screen">
               <div class="phone-screen-content">
-                <div class="screen-icon">📍</div>
+                <div class="screen-icon"><i data-lucide="map-pin"></i></div>
                 <div class="screen-title">Live GPS</div>
                 <div class="screen-desc">Track every step of your dog's walk</div>
               </div>
@@ -1429,19 +1449,19 @@
       <div class="features">
         <div class="feature reveal-on-scroll reveal-delay-3">
           <span class="feature-number">1</span>
-          <div class="feature-icon">🐕</div>
+          <div class="feature-icon"><i data-lucide="dog"></i></div>
           <h3>Book trusted walkers</h3>
           <p>Real people from your neighbourhood. Background-checked and ready to care for your pup.</p>
         </div>
         <div class="feature reveal-on-scroll reveal-delay-4">
           <span class="feature-number">2</span>
-          <div class="feature-icon">📍</div>
+          <div class="feature-icon"><i data-lucide="map-pin"></i></div>
           <h3>Track every walk live</h3>
           <p>GPS updates so you always know where your dog is. Peace of mind, every step.</p>
         </div>
         <div class="feature reveal-on-scroll reveal-delay-5">
           <span class="feature-number">3</span>
-          <div class="feature-icon">❤️</div>
+          <div class="feature-icon"><i data-lucide="heart"></i></div>
           <h3>Fund shelter dogs</h3>
           <p>20% of every walk helps Toronto rescues save more dogs. Every walk counts.</p>
         </div>
@@ -1680,6 +1700,11 @@
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
+  </script>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
   </script>
 </body>
 </html>
