@@ -21,7 +21,6 @@ Static landing page for Packwalk - a Toronto dog walking app that donates 20% to
 - `CNAME` - Custom domain config (packwalk.ca)
 - `paw.png` - Logo paw icon
 - `canada.png` - 3D rounded Canadian flag for hero
-- `archive/` - Previous landing page versions
 
 ## Page Sections
 
