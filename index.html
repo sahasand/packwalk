@@ -1696,11 +1696,6 @@
 
     <!-- Left: Content -->
     <div class="hero-content">
-      <div class="hero-badge">
-        <img src="canada.png" alt="Canada" class="hero-badge-flag">
-        <span>Canadian-made in Toronto</span>
-      </div>
-
       <h1>
         <span class="line"><span class="line-inner">Walk Dogs.</span></span>
         <span class="line"><span class="line-inner"><span class="highlight">Fund Rescues.<span class="highlight-line"></span></span></span></span>
@@ -2096,18 +2091,12 @@
     const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
     heroTl
-      // Badge fades in
-      .to('.hero-badge', {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-      })
       // Headline lines slide up
       .to('.hero h1', {
         opacity: 1,
         y: 0,
         duration: 0.6,
-      }, '-=0.4')
+      })
       .to('.hero h1 .line-inner', {
         y: 0,
         duration: 0.8,
