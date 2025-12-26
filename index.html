@@ -1264,12 +1264,11 @@
       btn.querySelector('.btn-content').innerHTML = 'Joining...';
 
       try {
-        await client.mutation("waitlist:add", { email, type: "owner", name });
+        const result = await client.mutation("waitlist:add", { email, type: "owner", name });
         document.getElementById('owner-form').style.display = 'none';
         document.getElementById('owner-success').classList.add('show');
-        // Animate position counter (random for now, would be from backend)
-        const position = Math.floor(Math.random() * 200) + 50;
-        animateCounter(document.getElementById('owner-position'), position);
+        // Animate position counter with real position from backend
+        animateCounter(document.getElementById('owner-position'), result.position);
       } catch (err) {
         console.error(err);
         btn.disabled = false;
@@ -1288,12 +1287,11 @@
       btn.querySelector('.btn-content').innerHTML = 'Applying...';
 
       try {
-        await client.mutation("waitlist:add", { email, type: "walker", name });
+        const result = await client.mutation("waitlist:add", { email, type: "walker", name });
         document.getElementById('walker-form').style.display = 'none';
         document.getElementById('walker-success').classList.add('show');
-        // Animate position counter
-        const position = Math.floor(Math.random() * 100) + 20;
-        animateCounter(document.getElementById('walker-position'), position);
+        // Animate position counter with real position from backend
+        animateCounter(document.getElementById('walker-position'), result.position);
       } catch (err) {
         console.error(err);
         btn.disabled = false;
