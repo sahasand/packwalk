@@ -566,6 +566,19 @@
       }
     }
 
+    /* Hero bottom fade - smooth transition to dark section */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--ink));
+      pointer-events: none;
+      z-index: 1;
+    }
+
     /* ===== MONEY JOURNEY COMPARISON SECTION ===== */
     .contrast {
       padding: 5rem 2rem;
@@ -881,6 +894,19 @@
       }
     }
 
+    /* Contrast bottom fade - smooth transition to light section */
+    .contrast::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, var(--cream));
+      pointer-events: none;
+      z-index: 1;
+    }
+
     /* ===== APP PREVIEW EXPERIENCE SECTION ===== */
     .app-preview {
       padding: 6rem 2rem;
@@ -899,6 +925,19 @@
       height: 800px;
       background: radial-gradient(circle, rgba(232, 106, 51, 0.06) 0%, transparent 70%);
       pointer-events: none;
+    }
+
+    /* App preview top fade - smooth transition from dark section */
+    .app-preview::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--ink), transparent);
+      pointer-events: none;
+      z-index: 1;
     }
 
     .app-preview-inner {
@@ -1805,6 +1844,18 @@
 
       .waitlist-panel {
         padding: 4rem 1.5rem;
+      }
+
+      /* Mobile: Smooth transition from owners to walkers panel */
+      .waitlist-panel.owners::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(to bottom, transparent, var(--ink));
+        pointer-events: none;
       }
 
       .form-card {
