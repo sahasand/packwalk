@@ -1841,18 +1841,36 @@
     .footer-brand {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .footer-logo {
       font-family: 'Fraunces', serif;
       font-size: 1.25rem;
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-logo svg {
+      width: 22px;
+      height: 22px;
     }
 
     .footer-tagline {
       font-size: 0.9rem;
       opacity: 0.7;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-tagline svg {
+      width: 18px;
+      height: 18px;
+      color: #C41E3A;
+      opacity: 1;
     }
 
     .footer-links {
@@ -1865,12 +1883,20 @@
       color: var(--warm-white);
       text-decoration: none;
       opacity: 0.7;
-      transition: opacity 0.3s ease;
+      transition: all 0.3s ease;
       font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .footer-links a:hover {
       opacity: 1;
+    }
+
+    .footer-links a svg {
+      width: 18px;
+      height: 18px;
     }
 
     /* Animations */
@@ -1916,11 +1942,21 @@
       .footer-inner {
         flex-direction: column;
         text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-brand {
+        flex-direction: column;
+        gap: 0.75rem;
       }
 
       .footer-links {
         flex-direction: column;
         gap: 1rem;
+      }
+
+      .footer-links a {
+        justify-content: center;
       }
     }
   </style>
@@ -2271,13 +2307,29 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <span class="footer-logo">🐾 Packwalk</span>
-        <span class="footer-tagline">Canadian-owned 🍁 Made in Toronto</span>
+        <span class="footer-logo">
+          <i data-lucide="paw-print"></i>
+          Packwalk
+        </span>
+        <span class="footer-tagline">
+          Canadian-owned
+          <i data-lucide="maple-leaf"></i>
+          Made in Toronto
+        </span>
       </div>
       <div class="footer-links">
-        <a href="https://instagram.com/packwalk.ca" target="_blank">Instagram</a>
-        <a href="mailto:hello@packwalk.ca">hello@packwalk.ca</a>
-        <a href="/privacy.html">Privacy</a>
+        <a href="https://instagram.com/packwalk.ca" target="_blank">
+          <i data-lucide="instagram"></i>
+          Instagram
+        </a>
+        <a href="mailto:hello@packwalk.ca">
+          <i data-lucide="mail"></i>
+          hello@packwalk.ca
+        </a>
+        <a href="/privacy.html">
+          <i data-lucide="shield"></i>
+          Privacy
+        </a>
       </div>
     </div>
   </footer>
