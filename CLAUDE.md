@@ -11,6 +11,7 @@ Static landing page for Packwalk - a Toronto dog walking app that donates 20% to
 - Pure HTML/CSS/JavaScript (no build tools, no npm)
 - Google Fonts: Fraunces (serif), DM Sans (sans-serif)
 - Convex backend via CDN import for waitlist forms
+- CSS keyframe animations (no external animation libraries)
 
 ## Files
 
@@ -18,6 +19,22 @@ Static landing page for Packwalk - a Toronto dog walking app that donates 20% to
 - `privacy.html` - Privacy policy
 - `CNAME` - Custom domain config (packwalk.ca)
 - `archive/` - Previous landing page versions
+
+## Waitlist Forms
+
+Split-screen layout with gamified success animations:
+- **Owner form** (left): Collects name + email, warm cream background
+- **Walker form** (right): Collects name + email, dark ink background
+
+### Success State Features
+- 8-paw confetti burst (CSS animation with `--angle` and `--distance` custom properties)
+- Animated SVG checkmark with ring pulse
+- Achievement badges ("Early Adopter" / "Future Walker")
+- Animated position counter using `requestAnimationFrame` with cubic ease-out
+
+### Position Counter Logic
+- New signups: Shows total count of their type (you're the newest)
+- Returning users: Shows their original signup position
 
 ## Convex Integration
 
@@ -27,14 +44,22 @@ Forms call the Convex backend directly via HTTP client:
 import { ConvexHttpClient } from "https://esm.sh/convex@1.21.0/browser";
 const client = new ConvexHttpClient("https://earnest-minnow-363.convex.cloud");
 
-// Owner waitlist
-await client.mutation("waitlist:add", { email, type: "owner" });
-
-// Walker application
-await client.mutation("waitlist:add", { email, type: "walker", name });
+// Returns { success: boolean, alreadyExists: boolean, position: number }
+const result = await client.mutation("waitlist:add", { email, type: "owner", name });
+animateCounter(element, result.position);
 ```
 
-The `waitlist:add` mutation is defined in the main `packwalk-mobile/convex/waitlist.ts` file.
+### Convex Functions (`packwalk-mobile/convex/waitlist.ts`)
+
+| Function | Type | Description |
+|----------|------|-------------|
+| `waitlist:add` | mutation | Add to waitlist, returns position |
+| `waitlist:getStats` | query | Get counts and all entries |
+
+```bash
+# Check waitlist stats
+npx convex run waitlist:getStats
+```
 
 ## Design System
 
