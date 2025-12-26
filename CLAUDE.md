@@ -72,6 +72,16 @@ Static landing page for Packwalk - a Toronto dog walking app that donates 20% to
 - `drawCheck` - SVG checkmark animation
 - `ringPulse` - Success check ring pulse
 
+### Section Transitions
+Gradient fades using `::after` pseudo-elements for smooth color flow between sections:
+
+| Section | Pseudo | Height | Effect |
+|---------|--------|--------|--------|
+| `.hero` | `::after` | 120px | Bottom fade: transparent → ink |
+| `.contrast` | `::after` | 100px | Bottom fade: transparent → cream |
+| `.app-preview` | `::after` | 80px | Top fade: ink → transparent |
+| `.waitlist-panel.owners` | `::after` | 60px | Mobile only: transparent → ink |
+
 ## Convex Integration
 
 Forms call the Convex backend directly via HTTP client:
