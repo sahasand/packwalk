@@ -160,6 +160,33 @@
       transform: translateY(-2px);
     }
 
+    /* ===== TOP ANNOUNCEMENT BANNER ===== */
+    .top-banner {
+      background: linear-gradient(135deg, var(--ember) 0%, var(--maple) 100%);
+      color: white;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      position: relative;
+      z-index: 101;
+    }
+    .top-banner a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-banner a:hover {
+      text-decoration: underline;
+    }
+    .top-banner-arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .top-banner a:hover .top-banner-arrow {
+      transform: translateX(4px);
+    }
+
     /* ===== HERO SECTION - DRAMATIC ASYMMETRIC LAYOUT ===== */
     .hero {
       min-height: 100vh;
@@ -320,6 +347,17 @@
 
     .hero-cta:hover::before {
       opacity: 1;
+    }
+
+    /* Tiny helper line under the primary CTA — sets expectations about Apple's
+       TestFlight install screen without making "TestFlight" the brand. */
+    .hero-cta-note {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      margin-top: 0.5rem;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
     .hero-cta span {
@@ -1187,6 +1225,21 @@
       letter-spacing: 0.05em;
     }
 
+    /* Live variant: iPhone badge now links to the public TestFlight URL. */
+    a.platform-badge-live {
+      background: linear-gradient(135deg, var(--ember) 0%, var(--maple) 100%);
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 16px rgba(232, 106, 51, 0.3);
+    }
+    a.platform-badge-live:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(232, 106, 51, 0.45);
+    }
+    a.platform-badge-live .platform-badge-dot {
+      background: white;
+    }
+
     .platform-badge-dot {
       width: 5px;
       height: 5px;
@@ -1856,6 +1909,27 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* iOS-only callout in waitlist success cards. Hidden by default; JS
+       adds [data-show] when navigator.userAgent matches iOS so non-iOS
+       visitors don't see a dead-end install link they can't act on. */
+    .ios-cta-link {
+      display: none;
+      margin-top: 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--ember);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .ios-cta-link[data-show] {
+      display: inline-block;
+      animation: textSlide 0.5s ease 1.1s forwards;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    .ios-cta-link:hover { opacity: 0.8; transform: translateY(-1px); }
+    .ios-cta-link-dark { color: var(--sage-light); }
+
     /* Divider */
     .waitlist-split::after {
       content: '';
@@ -2055,6 +2129,14 @@
   </style>
 </head>
 <body>
+  <!-- Top announcement banner -->
+  <div class="top-banner">
+    <a href="https://testflight.apple.com/join/6ckQkxCK" target="_blank" rel="noopener">
+      Now available on iPhone — try it free
+      <span class="top-banner-arrow">→</span>
+    </a>
+  </div>
+
   <!-- Navigation -->
   <nav>
     <a href="#" class="logo">
@@ -2085,18 +2167,19 @@
       </p>
 
       <div class="hero-ctas">
-        <a href="#waitlist" class="hero-cta">
+        <a href="https://testflight.apple.com/join/6ckQkxCK" target="_blank" rel="noopener" class="hero-cta">
           <span>
-            Get Early Access
+            Try on iPhone
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </span>
         </a>
-        <a href="#how-it-works" class="hero-cta hero-cta-secondary">
-          <span>See How It Works</span>
+        <a href="#waitlist" class="hero-cta hero-cta-secondary">
+          <span>Join the Waitlist</span>
         </a>
       </div>
+      <span class="hero-cta-note">Quick install via Apple's TestFlight</span>
     </div>
 
     <!-- Right: Floating Flag Visual -->
@@ -2184,9 +2267,9 @@
   <!-- App Preview Experience -->
   <section id="how-it-works" class="app-preview">
     <div class="app-preview-inner">
-      <p class="section-label reveal-on-scroll">Coming Soon</p>
+      <p class="section-label reveal-on-scroll">Now in Beta</p>
       <h2 class="reveal-on-scroll reveal-delay-1">Experience the app</h2>
-      <p class="section-subtitle reveal-on-scroll reveal-delay-2">See what's coming to iOS & Android</p>
+      <p class="section-subtitle reveal-on-scroll reveal-delay-2">Live on iPhone today. Android coming soon.</p>
 
       <!-- Phone Showcase -->
       <div class="phone-showcase">
@@ -2211,10 +2294,10 @@
               <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
               <span class="platform-name">iPhone</span>
             </div>
-            <div class="platform-badge">
+            <a href="https://testflight.apple.com/join/6ckQkxCK" target="_blank" rel="noopener" class="platform-badge platform-badge-live">
               <span class="platform-badge-dot"></span>
-              Coming to App Store
-            </div>
+              Try it on iPhone
+            </a>
           </div>
         </div>
 
@@ -2329,6 +2412,9 @@
               <span class="position-label">Position</span>
               <span class="position-number" id="owner-position">#--</span>
             </div>
+            <a href="https://testflight.apple.com/join/6ckQkxCK" target="_blank" rel="noopener" class="ios-cta-link" data-ios-only>
+              On iPhone? Install the beta now →
+            </a>
           </div>
         </div>
       </div>
@@ -2390,6 +2476,9 @@
               <span class="position-label">Position</span>
               <span class="position-number" id="walker-position">#--</span>
             </div>
+            <a href="https://testflight.apple.com/join/6ckQkxCK" target="_blank" rel="noopener" class="ios-cta-link ios-cta-link-dark" data-ios-only>
+              On iPhone? Try the beta now →
+            </a>
           </div>
         </div>
       </div>
@@ -2430,8 +2519,17 @@
   <!-- Convex Integration -->
   <script type="module">
     import { ConvexHttpClient } from "https://esm.sh/convex@1.21.0/browser";
-    
+
     const client = new ConvexHttpClient("https://earnest-minnow-363.convex.cloud");
+
+    // Reveal iOS-only CTAs (in waitlist success states). Modern iPads report
+    // a Mac-like UA but have a touch screen, so check both the legacy UA
+    // substring and the iPadOS-disguised-as-Mac case.
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (ua.includes('Mac') && navigator.maxTouchPoints > 1);
+    if (isIOS) {
+      document.querySelectorAll('[data-ios-only]').forEach(el => el.setAttribute('data-show', ''));
+    }
     
     // Animate counter function
     function animateCounter(element, target) {
@@ -2546,6 +2644,12 @@
         y: 0,
         duration: 0.7,
       }, '-=0.4')
+      // CTA helper note fades in just after
+      .to('.hero-cta-note', {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+      }, '-=0.3')
       // Stat badges float in
       .fromTo('.hero-stat-badge', {
         opacity: 0,
