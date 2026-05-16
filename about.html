@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Built by Sandeep and Astor · Packwalk</title>
+  <meta name="description" content="Why I built Packwalk. A solo founder in Toronto, a Great Pyrenees rescue named Astor, and a 20% platform fee that should never have gone to Seattle.">
+  <link rel="canonical" href="https://packwalk.ca/about">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://packwalk.ca/about">
+  <meta property="og:title" content="About — Built by Sandeep and Astor · Packwalk">
+  <meta property="og:description" content="Why I built Packwalk. A solo founder in Toronto, a Great Pyrenees rescue named Astor, and a 20% platform fee that should never have gone to Seattle.">
+  <meta property="og:image" content="https://packwalk.ca/paw.png">
+  <meta property="og:locale" content="en_CA">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — Built by Sandeep and Astor · Packwalk">
+  <meta name="twitter:description" content="Why I built Packwalk. A solo founder in Toronto, a Great Pyrenees rescue named Astor, and a 20% platform fee that should never have gone to Seattle.">
+  <meta name="twitter:image" content="https://packwalk.ca/paw.png">
+
+  <link rel="icon" type="image/png" href="/paw.png">
+  <link rel="apple-touch-icon" href="/paw.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --ember: #E86A33;
+      --ember-dark: #C85A2A;
+      --sage: #5B8C5A;
+      --ink: #2C2416;
+      --ink-light: #5C5446;
+      --cream: #FDF8F3;
+      --warm-white: #FFFCF7;
+      --maple: #C41E3A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--warm-white);
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    /* Top announcement banner */
+    .top-banner {
+      background: var(--ink);
+      color: var(--warm-white);
+      text-align: center;
+      padding: 0.65rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .top-banner a {
+      color: inherit;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .top-banner-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .top-banner a:hover .top-banner-arrow {
+      transform: translateX(3px);
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(255, 252, 247, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(44, 36, 22, 0.06);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--ink);
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .logo-paw {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .nav-cta {
+      background: var(--ember);
+      color: white;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--ember-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .about-hero {
+      padding: 4.5rem 2rem 3rem;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-photo {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+      transform: rotate(-1.5deg);
+      transition: transform 0.5s ease;
+    }
+
+    .hero-photo:hover {
+      transform: rotate(0deg);
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      max-width: 460px;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 22px;
+      box-shadow:
+        0 30px 60px -20px rgba(44, 36, 22, 0.3),
+        0 0 0 1px rgba(44, 36, 22, 0.06);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--ember);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-hero .lede {
+      font-size: 1.15rem;
+      color: var(--ink-light);
+    }
+
+    /* Body */
+    .about-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 5rem;
+    }
+
+    .about-body section {
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(44, 36, 22, 0.08);
+    }
+
+    .about-body section:first-of-type {
+      border-top: none;
+      padding-top: 1rem;
+    }
+
+    .about-body h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .about-body p {
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      margin-bottom: 1rem;
+    }
+
+    .about-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-body strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .about-body a {
+      color: var(--ember);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232, 106, 51, 0.35);
+      transition: border-color 0.3s ease;
+    }
+
+    .about-body a:hover {
+      border-bottom-color: var(--ember);
+    }
+
+    .closing-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--cream);
+      border-left: 3px solid var(--ember);
+      border-radius: 4px;
+      font-style: italic;
+      color: var(--ink-light);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      background: var(--ink);
+      color: var(--warm-white);
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-logo svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .footer-tagline {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-tagline svg {
+      width: 18px;
+      height: 18px;
+      color: var(--maple);
+      opacity: 1;
+    }
+
+    .footer-byline {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      color: var(--warm-white);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 252, 247, 0.3);
+      padding-bottom: 1px;
+      transition: opacity 0.3s ease, border-color 0.3s ease;
+    }
+
+    .footer-byline:hover {
+      opacity: 1;
+      border-bottom-color: rgba(255, 252, 247, 0.65);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--warm-white);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+
+    .footer-links a svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.25rem;
+      }
+
+      .nav-cta {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      .about-hero {
+        padding: 3rem 1.25rem 2rem;
+      }
+
+      .hero-photo {
+        transform: rotate(0deg);
+      }
+
+      .hero-photo img {
+        max-width: 320px;
+      }
+
+      .about-body {
+        padding: 1rem 1.25rem 3.5rem;
+      }
+
+      .about-body section {
+        padding: 2rem 0;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-brand {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .footer-links a {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top announcement banner -->
+  <div class="top-banner">
+    <a href="https://testflight.apple.com/join/6ckQkxCK" target="_blank" rel="noopener">
+      Now available on iPhone — try it free
+      <span class="top-banner-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="paw.png" alt="Packwalk" class="logo-paw">
+      Packwalk
+    </a>
+    <a href="index.html#waitlist" class="nav-cta">Join Waitlist</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="about-hero">
+    <div class="hero-photo">
+      <img src="img1.jpg" alt="Astor, a Great Pyrenees rescue, the inspiration for Packwalk">
+    </div>
+    <p class="hero-eyebrow">About Packwalk</p>
+    <h1>This is Astor.</h1>
+    <p class="lede">He's why Packwalk exists.</p>
+  </header>
+
+  <!-- Body -->
+  <main class="about-body">
+    <section>
+      <h2>Astor's story</h2>
+      <p>Astor came to me as a two-year-old Great Pyrenees through a small rescue in Chicago. He'd already been adopted once and returned. The reason on the paperwork was: "sheds too much."</p>
+      <p>Astor does not shed. Astor molts.</p>
+      <p>Twice a year, clumps of undercoat the size of small mammals come off in your hand. I keep the fur in a bag. The long-term plan is sweaters.</p>
+      <p>Back in Chicago, his littermates had also been adopted around the city, so we'd meet at parks and let them reunite. Four enormous white dogs barreling into each other like a slow-motion wrestling match. Crowds formed every time. Phones came out. Someone always asked if we were breeders.</p>
+      <p>We were not.</p>
+      <p>We were four people who said yes to dogs someone else had returned.</p>
+      <p>Eventually we moved to Toronto. He's now 130 pounds and the calmest animal I've ever lived with.</p>
+      <p>The Toronto rescue community quietly pulls dogs like Astor from overcrowded American shelters using volunteer time and donor money that never quite covers the cost.</p>
+      <p>That's the pipeline Packwalk is built to fund.</p>
+    </section>
+
+    <section>
+      <h2>Why Packwalk</h2>
+      <p>Every time I booked a walk on Rover, I watched 20% of the cost disappear to a US public company that has nothing to do with Toronto. Meanwhile the rescues that saved dogs like Astor were running fundraisers to cover spay surgeries.</p>
+      <p>The math is obvious. The platform fee should stay in the city. It should go to the organizations doing the work this whole industry is built on. So I built Packwalk. Same product, same price for owners, same pay for walkers. The 20% just goes somewhere different.</p>
+      <p>That's the whole pitch. <strong>Walk dogs. Fund rescues. Don't send the money to Seattle.</strong></p>
+    </section>
+
+    <section>
+      <h2>Who built this</h2>
+      <p>I'm Sandeep. Solo founder. I'm based in Toronto and I built the entire Packwalk app myself, including the iOS app, the backend, the payment system, and this website. No co-founders, no investors, no agency.</p>
+      <p>I have ataxia, which affects my speech. Most of my work happens in writing. Email is the way I prefer to do business and it's the way Packwalk gets built. If we end up working together — as a walker, an owner, a rescue partner, or anything else — expect a lot of email and a lot of follow-through.</p>
+    </section>
+
+    <section>
+      <h2>What happens next</h2>
+      <p>Packwalk is incorporated as a Canadian for-profit company today. That's the structure that lets me build it solo without spending years on charity registration. The plan, once the platform is self-sustaining, is to transition to a not-for-profit or steward-ownership model so that all surplus flows to Toronto rescues permanently. The for-profit structure is for getting started. The values are the point.</p>
+    </section>
+
+    <section>
+      <h2>Get in touch</h2>
+      <p>I read every email myself. <a href="mailto:hello@packwalk.ca">hello@packwalk.ca</a>.</p>
+      <p class="closing-note">Astor is usually on the floor next to my desk while I'm replying.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">
+          <i data-lucide="paw-print"></i>
+          Packwalk
+        </span>
+        <span class="footer-tagline">
+          Canadian-owned
+          <i data-lucide="maple-leaf"></i>
+          Made in Toronto
+        </span>
+        <a href="about.html" class="footer-byline">Built by Sandeep and Astor</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/packwalk.ca" target="_blank" rel="noopener">
+          <i data-lucide="instagram"></i>
+          Instagram
+        </a>
+        <a href="mailto:hello@packwalk.ca">
+          <i data-lucide="mail"></i>
+          hello@packwalk.ca
+        </a>
+        <a href="privacy.html">
+          <i data-lucide="shield"></i>
+          Privacy
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

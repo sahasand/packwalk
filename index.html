@@ -987,6 +987,133 @@
       z-index: 1;
     }
 
+    /* ===== FOUNDER STORY SECTION ===== */
+    .founder-story {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top fade picks up the dark seam from .contrast above */
+    .founder-story::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--ink), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .founder-story-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .founder-image-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 30px 60px -20px rgba(44, 36, 22, 0.28),
+        0 0 0 1px rgba(44, 36, 22, 0.06);
+      transform: rotate(-1.5deg);
+      transition: transform 0.5s ease;
+    }
+
+    .founder-image-wrap:hover {
+      transform: rotate(0deg);
+    }
+
+    .founder-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .founder-content h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    .founder-content p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink-light);
+      margin-bottom: 1.1rem;
+    }
+
+    .founder-content p:last-of-type {
+      margin-bottom: 1.75rem;
+    }
+
+    .founder-content strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .founder-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--ember);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding-bottom: 3px;
+      border-bottom: 1px solid rgba(232, 106, 51, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .founder-cta:hover {
+      border-bottom-color: var(--ember);
+      gap: 0.75rem;
+    }
+
+    .founder-cta svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .founder-cta:hover svg {
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 768px) {
+      .founder-story {
+        padding: 4.5rem 1.5rem 3.5rem;
+      }
+
+      .founder-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .founder-image-wrap {
+        max-width: 420px;
+        margin: 0 auto;
+        transform: rotate(0deg);
+      }
+    }
+
     /* ===== APP PREVIEW EXPERIENCE SECTION ===== */
     .app-preview {
       padding: 6rem 2rem;
@@ -1005,19 +1132,6 @@
       height: 800px;
       background: radial-gradient(circle, rgba(232, 106, 51, 0.06) 0%, transparent 70%);
       pointer-events: none;
-    }
-
-    /* App preview top fade - smooth transition from dark section */
-    .app-preview::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 80px;
-      background: linear-gradient(to bottom, var(--ink), transparent);
-      pointer-events: none;
-      z-index: 1;
     }
 
     .app-preview-inner {
@@ -2040,6 +2154,21 @@
       opacity: 1;
     }
 
+    .footer-byline {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      color: var(--warm-white);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 252, 247, 0.3);
+      padding-bottom: 1px;
+      transition: opacity 0.3s ease, border-color 0.3s ease;
+    }
+
+    .footer-byline:hover {
+      opacity: 1;
+      border-bottom-color: rgba(255, 252, 247, 0.65);
+    }
+
     .footer-links {
       display: flex;
       gap: 2rem;
@@ -2260,6 +2389,28 @@
       <div class="contrast-bottom">
         <p class="contrast-tagline">Same walk. Same price. <span class="highlight">Bigger impact.</span></p>
         <p class="contrast-subtagline">Your walks fund local rescue missions</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Story -->
+  <section class="founder-story">
+    <div class="founder-story-inner">
+      <div class="founder-grid">
+        <div class="founder-image-wrap reveal-on-scroll">
+          <img src="img1.jpg" alt="Sandeep and Astor, a Great Pyrenees rescue, in Toronto" class="founder-image">
+        </div>
+        <div class="founder-content reveal-on-scroll reveal-delay-1">
+          <h2>Built in Toronto by Sandeep and Astor</h2>
+          <p>Astor is my Great Pyrenees. He's a rescue. He's also the reason this app exists.</p>
+          <p>I kept booking walks on Rover and watching the platform fee disappear to Seattle. Toronto rescues were doing the actual work of saving dogs like Astor and getting nothing back. Packwalk is what happens when you build the same product but point the money where it should have gone in the first place.</p>
+          <a href="about.html" class="founder-cta">
+            Read Astor's story
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -2498,6 +2649,7 @@
           <i data-lucide="maple-leaf"></i>
           Made in Toronto
         </span>
+        <a href="about.html" class="footer-byline">Built by Sandeep and Astor</a>
       </div>
       <div class="footer-links">
         <a href="https://instagram.com/packwalk.ca" target="_blank">
