@@ -111,10 +111,10 @@
       line-height: 1.2;
     }
 
-    /* Navigation */
+    /* Navigation (sits below the fixed top banner) */
     nav {
       position: fixed;
-      top: 0;
+      top: 44px;
       left: 0;
       right: 0;
       padding: 1.25rem 2rem;
@@ -168,8 +168,20 @@
       padding: 0.75rem 1rem;
       font-size: 0.9rem;
       font-weight: 500;
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
       z-index: 101;
+    }
+    /* Push page content down past the fixed banner */
+    body {
+      padding-top: 44px;
     }
     .top-banner a {
       color: white;
