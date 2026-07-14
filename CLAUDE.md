@@ -50,7 +50,9 @@ Static landing page for Packwalk - a Toronto dog walking app that donates 20% to
 - Animated position counter
 
 ### 5. Footer
-- Lucide icons: paw-print, maple-leaf, instagram, mail, shield
+- Lucide icons: paw-print, mail, shield. Maple leaf + Instagram are INLINE SVGs
+  (identical markup on index/about/become-a-dog-walker) because lucide@latest
+  dropped both names — do not switch them back to `data-lucide`.
 - Mobile: stacks vertically with centered alignment
 
 ## Animations
