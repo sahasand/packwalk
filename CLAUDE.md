@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Static landing page for Packwalk - a Toronto dog walking app that donates 20% to local shelters. Deployed to **packwalk.ca** via GitHub Pages.
+Static landing page for Packwalk, a live Toronto dog walking app for owners and walkers. Packwalk is committed to supporting Toronto animal rescues through company-funded giving. Deployed to **packwalk.ca** via GitHub Pages.
+
+> **Giving copy guardrail:** Never connect a customer's walk payment, fee, tip, or purchase to a charitable donation. Do not publish per-walk giving percentages or customer impact totals. Tips go 100% to walkers. Approved framing: "Packwalk is committed to supporting Toronto animal rescues through company-funded giving."
 
 ## Tech Stack
 
@@ -30,29 +32,30 @@ Static landing page for Packwalk - a Toronto dog walking app that donates 20% to
 - Animated headline with line-by-line reveal
 - Floating decorative paw prints (hidden on mobile)
 - Stat badges floating near flag (hidden on tablet/mobile)
+- Primary CTA links to the live App Store listing
 - Mobile: Flag floats near headline at 90px, tilted 12°
 
-### 2. Money Journey Comparison ("Why Packwalk")
+### 2. Product Pillars ("Local by design")
 - Dark background section
-- Side-by-side journey cards: Rover (faded) vs Packwalk (vibrant)
-- Animated money flow line on Packwalk card
-- GSAP scroll animations (cards slide in from opposite sides)
+- Three pillars: neighbourhood walkers, live confidence, and community-first company
+- Company-funded giving language is not connected to customer payments
 
 ### 3. App Preview
 - Phone mockups showing app screens (iPhone + Android)
 - 3D tilt effect on scroll (GSAP)
 - Feature cards with Lucide icons (dog, map-pin, heart)
-- "Coming Soon" badges
+- iPhone CTA links to the live App Store; Android remains "Coming Soon"
 
-### 4. Waitlist Split Section
+### 4. Download Split Section
 - Split-screen layout: Owner (cream) | Walker (dark)
-- Gamified success state with paw confetti burst
-- Animated position counter
+- Both roles link to the same live iPhone app
+- Walker panel explains the 80% walk-fee share and 100%-of-tips payout
 
 ### 5. Footer
 - Lucide icons: paw-print, mail, shield. Maple leaf + Instagram are INLINE SVGs
   (identical markup on index/about/become-a-dog-walker) because lucide@latest
   dropped both names — do not switch them back to `data-lucide`.
+- Includes a direct App Store link
 - Mobile: stacks vertically with centered alignment
 
 ## Animations
@@ -84,30 +87,11 @@ Gradient fades using `::after` pseudo-elements for smooth color flow between sec
 | `.app-preview` | `::after` | 80px | Top fade: ink → transparent |
 | `.waitlist-panel.owners` | `::after` | 60px | Mobile only: transparent → ink |
 
-## Convex Integration
+## App Store
 
-Forms call the Convex backend directly via HTTP client:
-
-```javascript
-import { ConvexHttpClient } from "https://esm.sh/convex@1.21.0/browser";
-const client = new ConvexHttpClient("https://earnest-minnow-363.convex.cloud");
-
-// Returns { success: boolean, alreadyExists: boolean, position: number }
-const result = await client.mutation("waitlist:add", { email, type: "owner", name });
-animateCounter(element, result.position);
-```
-
-### Convex Functions (`packwalk-mobile/convex/waitlist.ts`)
-
-| Function | Type | Description |
-|----------|------|-------------|
-| `waitlist:add` | mutation | Add to waitlist, returns position |
-| `waitlist:getStats` | query | Get counts and all entries |
-
-```bash
-# Check waitlist stats
-npx convex run waitlist:getStats
-```
+- Public listing: `https://apps.apple.com/app/id6758026014`
+- App Store ID: `6758026014`
+- The homepage no longer loads Convex or collects owner/walker waitlist entries.
 
 ## Design System
 
@@ -149,9 +133,4 @@ git push
 
 ## Relationship to Main App
 
-This landing page lives inside `/packwalk-mobile/web_html/` but has its own git history. The main app's Convex backend (in `/packwalk-mobile/convex/`) handles the waitlist mutations. After adding/modifying Convex functions, deploy with:
-
-```bash
-cd /Users/sanman/Documents/dog-walk-new/packwalk-mobile
-npx convex dev --once  # Push to dev deployment
-```
+This landing page lives inside `/packwalk-mobile/web_html/` but has its own git history. It links to the Packwalk iOS app but does not call the app's Convex backend.
