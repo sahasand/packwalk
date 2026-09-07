@@ -926,3 +926,83 @@ p {
     animation: none !important;
   }
 }
+
+/* Native disclosure keeps contact choices usable without JavaScript or a mail handler. */
+.contact-options {
+  margin-top: 20px;
+}
+.contact-options summary {
+  cursor: pointer;
+  list-style: none;
+  width: fit-content;
+  max-width: 100%;
+}
+.contact-options summary::-webkit-details-marker {
+  display: none;
+}
+.contact-options .button {
+  margin-top: 0;
+}
+.contact-plus {
+  font-size: 22px;
+}
+.contact-options[open] .contact-plus {
+  transform: rotate(45deg);
+}
+.contact-panel {
+  margin-top: 18px;
+  padding: 22px;
+  background: var(--paper);
+  border: 1px solid #c5c7b9;
+  border-radius: 5px;
+}
+.contact-panel h3 {
+  font-size: 18px;
+}
+.contact-panel p {
+  font-size: 13px;
+  margin-top: 12px;
+}
+.contact-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.contact-choices a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 11px 14px;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.contact-choices a:hover {
+  background: var(--sage);
+}
+.contact-address strong {
+  color: var(--ink);
+  font-size: 16px;
+  user-select: all;
+  overflow-wrap: anywhere;
+}
+.contact-native {
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 14px;
+}
+.contact-panel p.small {
+  font-size: 11px;
+}
+@media (max-width: 360px) {
+  .contact-panel {
+    padding: 16px;
+  }
+  .contact-choices {
+    flex-direction: column;
+  }
+}
